@@ -81,4 +81,4 @@ def getConfig(section):  # pylint: disable=invalid-name
     Get config helper function.
     Return the config for the given section.
     """
-return ConfigSystem.get_instance().get_section(section) # pylint: disable=no-member
+    return ConfigSystem.get_instance().get_section(section)  # pylint: disable=no-member

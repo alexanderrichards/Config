@@ -28,7 +28,21 @@ class ConfigSystem(configparser.ConfigParser):
 
 def getConfig(section):  # pylint: disable=invalid-name
     """
-    Get config helper function.
-    Return the config for the given section.
+    Get config section helper function.
+
+    This function allows access to the given `section` of the config in a similar way to the
+    python logging system.
+
+    Args:
+        section (str): The name of the `section` to retrieve.
+
+    Returns:
+         configparser.SectionProxy: A `SectionProxy` object for the requested `section`.
+
+    Raises:
+        configparser.NoSectionError: If `section` does not exist in the config.
     """
-    return ConfigSystem.get_instance().get_section(section) # pylint: disable=no-member
+    instance = ConfigSystem.get_instance()  # pylint: disable=no-member
+    if not instance.has_section(section):
+        raise configparser.NoSectionError(section)
+    return instance[section]
