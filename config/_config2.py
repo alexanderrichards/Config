@@ -3,11 +3,19 @@ from os.path import expanduser, expandvars
 import configparser
 from singleton import singleton
 
-from configparser import ExtendedInterpolation
+__all__ = ('ConfigSystem', 'getConfig', 'ExtendedEnvInterpolation')
 
 
-class ExtendedEnvInterpolation(ExtendedInterpolation):
+class ExtendedEnvInterpolation(configparser.ExtendedInterpolation):
+    """Extended Interpolator that also expands env variables."""
+
+    # pylint: disable=too-many-arguments
     def before_get(self, parser, section, option, value, defaults):
+        """
+        Before get.
+
+        Expands out both user ~ and environment variables.
+        """
         return super(ExtendedEnvInterpolation, self).before_get(parser,
                                                                 section,
                                                                 option,
@@ -15,6 +23,11 @@ class ExtendedEnvInterpolation(ExtendedInterpolation):
                                                                 defaults)
 
     def before_set(self, parser, section, option, value):
+        """
+        Before set.
+
+        Expands out both user ~ and environment variables.
+        """
         return super(ExtendedEnvInterpolation, self).before_set(parser,
                                                                 section,
                                                                 option,
@@ -23,6 +36,8 @@ class ExtendedEnvInterpolation(ExtendedInterpolation):
 
 @singleton
 class ConfigSystem(configparser.ConfigParser):
+    """Singleton version of `ConfigParser`."""
+
     pass
 
 
