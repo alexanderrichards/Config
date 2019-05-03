@@ -36,10 +36,16 @@ class ExtendedEnvInterpolation(configparser.ExtendedInterpolation):
 
 @singleton
 class ConfigSystem(configparser.ConfigParser):
-    """Singleton version of `ConfigParser`."""
+    """Singleton version of `configparser.ConfigParser`."""
 
     def __init__(self, *args, **kwargs):
-        """Initialisation."""
+        """
+        Initialisation.
+
+        Args:
+            The args are the same as for `configparser.ConfigParser` and can be seen at:
+            https://docs.python.org/3/library/configparser.html#configparser.ConfigParser
+        """
         if len(args) < 10:  # not explicitly set in args
             kwargs.setdefault("interpolation", ExtendedEnvInterpolation())
         super(ConfigSystem, self).__init__(*args, **kwargs)
