@@ -38,7 +38,11 @@ class ExtendedEnvInterpolation(configparser.ExtendedInterpolation):
 class ConfigSystem(configparser.ConfigParser):
     """Singleton version of `ConfigParser`."""
 
-    pass
+    def __init__(self, *args, **kwargs):
+        """Initialisation."""
+        if len(args) < 10:  # not explicitly set in args
+            kwargs.setdefault("interpolation", ExtendedEnvInterpolation())
+        super(ConfigSystem, self).__init__(*args, **kwargs)
 
 
 def getConfig(section):  # pylint: disable=invalid-name
