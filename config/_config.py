@@ -22,7 +22,7 @@ class ConfigSystem(object):
 
     @property
     def config(self):
-        """The current state of the configuration."""
+        """Get the current state of the configuration."""
         return dict(deepcopy(self._config))
 
     @property
@@ -48,7 +48,7 @@ class ConfigSystem(object):
         return deepcopy(self._config[section])
 
     def read(self, filenames, ignore_errors=False):
-        """Setup the configuration system."""
+        """Set-up the configuration system."""
         config_parser = ConfigParser.SafeConfigParser()
         config_parser.optionxform = str
 
