@@ -7,7 +7,15 @@ setup(
     packages=find_packages(),
     install_requires=['configparser',
                       'singleton @ git+git://github.com/alexanderrichards/Singleton.git'],
-
+    extras_require={
+        'dev': ['mock',
+                'pylint',
+                'pycodestyle',
+                'pydocstyle',
+                'pytest',
+                'coverage',
+                'pytest-cov'],
+    },
     # metadata for upload to PyPI
     author="Alexander Richards",
     author_email="a.richards@imperial.ac.uk",

@@ -36,12 +36,12 @@ class ConfigSystem(object):
         return deepcopy(self._config['Core'].get("entry_point_map"))
 
     @entry_point_map.setter
-    def entry_point_map(self, map):
+    def entry_point_map(self, map_):
         """Set the entry point map (one time only)."""
         if self._config['Core'].get("entry_point_map") is not None:
             self._logger.warning("Can not re-set entry_point_map once it's been set.")
         else:
-            self._config['Core']['entry_point_map'] = map
+            self._config['Core']['entry_point_map'] = map_
 
     def get_section(self, section):
         """Return a given section."""
@@ -77,8 +77,5 @@ class ConfigSystem(object):
 
 
 def getConfig(section):  # pylint: disable=invalid-name
-    """
-    Get config helper function.
-    Return the config for the given section.
-    """
+    """Return the config for the given section."""
     return ConfigSystem.get_instance().get_section(section)  # pylint: disable=no-member

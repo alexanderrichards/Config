@@ -66,6 +66,7 @@ def getConfig(section):  # pylint: disable=invalid-name
 
     Raises:
         configparser.NoSectionError: If `section` does not exist in the config.
+
     """
     instance = ConfigSystem.get_instance()  # pylint: disable=no-member
     if not instance.has_section(section):
