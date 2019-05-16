@@ -29,9 +29,6 @@ matrix:
     - python: 2.7
       stage: test
       script: pytest -vv --cov=config --cov-report=term-missing --cov-fail-under=45 tests
-    - python: 3.6
-      stage: test
-      script: pytest -vv --cov=config --cov-report=term-missing --cov-fail-under=45 tests
 git:
   depth: 3
 install:
