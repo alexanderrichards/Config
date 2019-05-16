@@ -35,7 +35,7 @@ class ExtendedEnvInterpolation(configparser.ExtendedInterpolation):
 
 
 @singleton
-class ConfigSystem(configparser.ConfigParser):
+class ConfigSystem(configparser.ConfigParser):  # pylint: disable=too-many-ancestors
     """Singleton version of `configparser.ConfigParser`."""
 
     def __init__(self, *args, **kwargs):
