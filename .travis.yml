@@ -24,7 +24,7 @@ matrix:
     - python: 3.6
       stage: style
       name: "py3_pylint"
-      script: pylint config
+      script: pylint --ignore=_config.py config
 
     - python: 2.7
       stage: test
